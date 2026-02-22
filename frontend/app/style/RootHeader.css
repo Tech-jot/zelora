@@ -1,0 +1,195 @@
+/* ── RootHeader.css ─────────────────────────────────────────────────
+   Uses ONLY the global :root variables from globals.css
+   No @import · No :root block · No hardcoded colour values
+──────────────────────────────────────────────────────────────────── */
+
+/* ── Utility bar links ── */
+.util-link {
+  transition: color 0.2s;
+}
+.util-link:hover {
+  color: var(--text);
+}
+
+/* ── Category nav link ── */
+.cat-link {
+  border-radius: var(--r);
+  transition: background 0.18s, color 0.18s;
+}
+.cat-link:hover,
+.cat-link[data-open="true"] {
+  background: var(--bg-soft);
+  color: var(--text);
+}
+
+/* ── Caret chevron ── */
+.caret-icon {
+  transition: transform 0.22s ease;
+  flex-shrink: 0;
+}
+.caret-open {
+  transform: rotate(180deg);
+}
+
+/* ── Mega panel wrapper ── */
+.mega-panel-inline {
+  animation: panelFadeIn 0.18s ease both;
+}
+
+@keyframes panelFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+
+/* ── Mega menu item ── */
+.mega-item {
+  transition: background 0.15s;
+}
+.mega-item:hover {
+  background: var(--bg-soft);
+}
+
+.mega-icon {
+  transition: transform 0.2s;
+}
+.mega-item:hover .mega-icon {
+  transform: scale(1.1);
+}
+
+/* ── Brand list link ── */
+.brand-list-link {
+  transition: color 0.15s, padding-left 0.15s;
+}
+.brand-list-link:hover {
+  color: var(--text);
+  padding-left: 4px;
+}
+
+/* ── Brand A–Z alpha grid ── */
+.brands-alpha-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 3px;
+}
+
+.brands-alpha-btn {
+  aspect-ratio: 1;
+  border: none;
+  border-radius: var(--r);
+  font-family: var(--font-b);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-sub);
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s;
+}
+.brands-alpha-btn:hover {
+  background: var(--accent-light);
+  color: var(--accent);
+}
+.brands-alpha-active {
+  background: var(--text) !important;
+  color: var(--bg) !important;
+}
+
+/* ── Brand search input ── */
+.brands-search {
+  font-family: var(--font-b);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.brands-search:focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+/* ── Brands list scrollbar ── */
+.brands-list-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.brands-list-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.brands-list-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.brands-list-scroll::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+/* ── Search button ── */
+.search-btn {
+  border-radius: var(--r);
+  transition: background 0.18s, color 0.18s;
+}
+.search-btn:hover {
+  background: var(--bg-soft);
+  color: var(--text);
+}
+
+/* ── Cart button ── */
+.cart-btn {
+  transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.cart-btn:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+}
+
+/* ── Sticky header shadow ── */
+.header-root {
+  transition: box-shadow 0.25s;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   MOBILE DRAWER
+═══════════════════════════════════════════════════════════════════ */
+
+/* Backdrop */
+.mobile-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  z-index: 99;
+  pointer-events: none;
+  transition: background 0.3s ease;
+}
+.mobile-drawer-backdrop--open {
+  background: rgba(0, 0, 0, 0.45);
+  pointer-events: all;
+}
+
+/* Drawer panel */
+.mobile-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: min(88vw, 360px);
+  background: #fff;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(-100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 4px 0 32px rgba(0, 0, 0, 0.12);
+  will-change: transform;
+}
+.mobile-drawer--open {
+  transform: translateX(0);
+}
+
+/* A–Z horizontal strip (mobile brands) — hide scrollbar */
+.mobile-az-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.mobile-az-scroll::-webkit-scrollbar {
+  display: none;
+}

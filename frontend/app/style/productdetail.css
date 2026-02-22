@@ -1,0 +1,830 @@
+/* ── Animations ───────────────────────────────────────────────── */
+@keyframes ppFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ppImgIn {
+  from {
+    opacity: 0;
+    transform: scale(1.03);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ── Root Page ────────────────────────────────────────────────── */
+.pp-root {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: var(--bg-soft);
+  color: var(--text);
+  font-family: var(--font-b);
+}
+
+/* ── Typography Helpers ───────────────────────────────────────── */
+.pp-display {
+  font-family: var(--font-b);
+}
+
+/* ── Shared Section Header ────────────────────────────────────── */
+.pp-section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.pp-section-title {
+  font-family: var(--font-b);
+  font-size: clamp(1.7rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.01em;
+}
+
+.pp-section-rule {
+  width: 48px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 9999px;
+  margin: 0 auto;
+}
+
+/* ============================================================
+   1. HERO SECTION
+   ============================================================ */
+.pp-hero {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 4rem 2rem 3.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem 5rem;
+  animation: ppFadeUp 0.65s ease both;
+}
+
+/* ── Gallery ──────────────────────────────────────────────────── */
+.pp-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.pp-gallery__main {
+  position: relative;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background: var(--bg-muted);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.1);
+}
+
+.pp-gallery__main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  animation: ppImgIn 0.4s ease both;
+}
+
+.pp-gallery__badge {
+  position: absolute;
+  top: 1.1rem;
+  left: 1.1rem;
+  background: var(--text);
+  color: var(--bg);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.85rem;
+  border-radius: 9999px;
+}
+
+.pp-gallery__thumbs {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.pp-gallery__thumb {
+  flex: 1;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: var(--r);
+  border: 2px solid var(--border);
+  background: var(--bg-muted);
+  cursor: pointer;
+  padding: 0;
+  transition: border-color 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.pp-gallery__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pp-gallery__thumb:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+
+.pp-gallery__thumb--active {
+  border-color: var(--accent);
+  transform: scale(1.03);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* ── Product Info ─────────────────────────────────────────────── */
+.pp-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.1rem;
+  animation: ppFadeUp 0.65s 0.15s ease both;
+}
+
+.pp-info__collection {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.pp-info__name {
+  font-family: var(--font-b);
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.12;
+  color: var(--text);
+  margin: 0;
+}
+
+.pp-info__tagline {
+  font-family: var(--font-b);
+  font-style: italic;
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--text-muted);
+}
+
+/* Stars */
+.pp-stars-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.pp-stars {
+  display: flex;
+  gap: 2px;
+}
+
+.pp-star {
+  font-size: 0.9rem;
+  line-height: 1;
+  color: var(--border);
+}
+
+.pp-star--filled {
+  color: var(--accent);
+}
+
+.pp-info__review-count {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* Price */
+.pp-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.pp-price {
+  font-family: var(--font-b);
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.pp-price--old {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  text-decoration: line-through;
+}
+
+.pp-discount-badge {
+  background: var(--accent-light);
+  color: var(--accent-dark);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.28rem 0.7rem;
+  border-radius: 9999px;
+  letter-spacing: 0.04em;
+}
+
+.pp-info__stock {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #6ab187;
+}
+
+/* Quantity */
+.pp-qty-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.pp-qty-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+}
+
+.pp-qty-ctrl {
+  display: flex;
+  align-items: stretch;
+  border: 1.5px solid var(--border);
+  border-radius: var(--r);
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.pp-qty-ctrl__btn {
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text-sub);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.pp-qty-ctrl__btn:hover {
+  background: var(--accent-light);
+  color: var(--accent-dark);
+}
+
+.pp-qty-ctrl__val {
+  min-width: 44px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text);
+  border-left: 1.5px solid var(--border);
+  border-right: 1.5px solid var(--border);
+}
+
+/* Buttons */
+.pp-actions {
+  display: flex;
+  gap: 0.85rem;
+}
+
+.pp-btn {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  border-radius: var(--r);
+  font-family: var(--font-b);
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.28s ease, box-shadow 0.28s ease, background 0.28s ease;
+  border: 2px solid transparent;
+}
+
+.pp-btn--cart {
+  background: var(--text);
+  color: var(--bg);
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.12);
+}
+
+.pp-btn--cart:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.pp-btn--cart--added {
+  background: #6ab187;
+  box-shadow: 0 6px 22px rgba(106, 177, 135, 0.3);
+}
+
+.pp-btn--buy {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--text);
+}
+
+.pp-btn--buy:hover {
+  background: var(--accent-light);
+  transform: translateY(-2px);
+}
+
+/* Trust badges */
+.pp-trust {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+
+.pp-trust span {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   2. PRODUCT TABS
+   ============================================================ */
+.pp-tabs-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+/* ── Tabs Nav — fully responsive, no scroll arrows ── */
+.pp-tabs__nav {
+  display: flex;
+  border-bottom: 2px solid var(--border);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  gap: 0;
+}
+
+.pp-tabs__nav::-webkit-scrollbar {
+  display: none;
+}
+
+.pp-tab-btn {
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-b);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  cursor: pointer;
+  color: var(--text-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: color 0.22s ease, border-color 0.22s ease;
+}
+
+.pp-tab-btn:hover {
+  color: var(--accent);
+}
+
+.pp-tab-btn--active {
+  color: var(--accent-dark);
+  border-bottom-color: var(--accent);
+}
+
+.pp-tabs__content {
+  padding-top: 2rem;
+  animation: ppFadeUp 0.35s ease both;
+}
+
+.pp-tabs__content p {
+  font-size: 0.95rem;
+  line-height: 1.95;
+  color: var(--text-sub);
+  font-weight: 300;
+}
+
+/* ============================================================
+   3. FEATURES — Glass Cards
+   ============================================================ */
+.pp-features {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.pp-features__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.pp-feature-card {
+  padding: 2.2rem 1.5rem;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.pp-feature-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent-light);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.08);
+}
+
+.pp-feature-card__icon {
+  font-size: 2rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  line-height: 1;
+}
+
+.pp-feature-card__title {
+  font-family: var(--font-b);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.pp-feature-card__desc {
+  font-size: 0.8rem;
+  color: var(--text-sub);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* ============================================================
+   4. REVIEWS — Glassmorphism Cards
+   ============================================================ */
+.pp-reviews {
+  background: var(--bg-muted);
+  padding: 4.5rem 2rem;
+}
+
+.pp-reviews__avg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 1rem;
+  font-size: 0.88rem;
+  color: var(--text-sub);
+}
+
+.pp-reviews__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.pp-review-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.6rem;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pp-review-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.08);
+}
+
+.pp-review-card__top {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.pp-review-card__avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid var(--accent-light);
+}
+
+.pp-review-card__name {
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pp-review-card__date {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 1px;
+}
+
+.pp-review-card__title {
+  font-family: var(--font-b);
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--accent-dark);
+}
+
+.pp-review-card__text {
+  font-size: 0.82rem;
+  line-height: 1.8;
+  color: var(--text-sub);
+  font-weight: 300;
+}
+
+/* ============================================================
+   5. FAQ ACCORDION
+   ============================================================ */
+.pp-faq {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 4.5rem 2rem;
+}
+
+.pp-faq__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.pp-faq__item {
+  border: 2px solid var(--border);
+  border-radius: var(--r);
+  overflow: hidden;
+  background: var(--bg);
+  transition: border-color 0.28s ease;
+}
+
+.pp-faq__item:hover {
+  border-color: var(--accent-light);
+}
+
+.pp-faq__item--open {
+  border-color: var(--accent);
+}
+
+.pp-faq__question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 1.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-b);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text);
+  transition: color 0.22s ease;
+}
+
+.pp-faq__item--open .pp-faq__question {
+  color: var(--accent-dark);
+}
+
+.pp-faq__icon {
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.pp-faq__answer {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+  padding: 0 1.5rem;
+}
+
+.pp-faq__item--open .pp-faq__answer {
+  max-height: 280px;
+  opacity: 1;
+  padding: 0 1.5rem 1.25rem;
+}
+
+.pp-faq__answer p {
+  font-size: 0.85rem;
+  line-height: 1.85;
+  color: var(--text-sub);
+  font-weight: 300;
+  border-top: 1px solid var(--border);
+  padding-top: 0.85rem;
+}
+
+/* ============================================================
+   6. NEWSLETTER
+   ============================================================ */
+.pp-newsletter {
+  background: var(--accent);
+  padding: 5rem 2rem;
+}
+
+.pp-newsletter__inner {
+  max-width: 580px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.pp-newsletter__eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.pp-newsletter__title {
+  font-family: var(--font-b);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 700;
+  color: var(--bg);
+  line-height: 1.25;
+  margin: 0;
+}
+
+.pp-newsletter__sub {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.78);
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+.pp-newsletter__form {
+  display: flex;
+  overflow: hidden;
+  border-radius: var(--r);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.22);
+  margin-top: 0.5rem;
+}
+
+.pp-newsletter__input {
+  flex: 1;
+  padding: 1rem 1.25rem;
+  background: var(--bg);
+  color: var(--text);
+  border: none;
+  outline: none;
+  font-family: var(--font-b);
+  font-size: 0.9rem;
+}
+
+.pp-newsletter__input::placeholder {
+  color: var(--text-muted);
+}
+
+.pp-newsletter__btn {
+  padding: 1rem 1.5rem;
+  background: var(--text);
+  color: var(--bg);
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-b);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: opacity 0.2s ease;
+  white-space: nowrap;
+}
+
+.pp-newsletter__btn:hover {
+  opacity: 0.82;
+}
+
+/* ============================================================
+   RESPONSIVE BREAKPOINTS
+   ============================================================ */
+
+/* ── 1024px ───────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .pp-features__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pp-reviews__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ── 768px ────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .pp-hero {
+    grid-template-columns: 1fr;
+    padding: 3rem 1.25rem;
+    gap: 2.5rem;
+  }
+
+  /* Tabs — edge-to-edge scrollable, no side padding on section */
+  .pp-tabs-section {
+    padding: 3rem 0;
+  }
+
+  .pp-tabs__nav {
+    padding: 0 1.25rem;
+    -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
+    mask-image: linear-gradient(to right, black 85%, transparent 100%);
+  }
+
+  .pp-tabs__content {
+    padding: 1.75rem 1.25rem 0;
+  }
+
+  .pp-tab-btn {
+    padding: 0.75rem 1.1rem;
+    font-size: 0.72rem;
+  }
+
+  .pp-features {
+    padding: 3rem 1.25rem;
+  }
+
+  .pp-features__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .pp-reviews {
+    padding: 3rem 1.25rem;
+  }
+
+  .pp-reviews__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pp-faq {
+    padding: 3rem 1.25rem;
+  }
+
+  .pp-actions {
+    flex-direction: column;
+  }
+
+  .pp-newsletter {
+    padding: 3.5rem 1.25rem;
+  }
+
+  .pp-newsletter__form {
+    flex-direction: column;
+  }
+}
+
+/* ── 480px ────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .pp-features__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pp-trust {
+    gap: 0.75rem;
+  }
+
+  .pp-gallery__thumbs {
+    gap: 0.5rem;
+  }
+
+  .pp-tab-btn {
+    padding: 0.7rem 0.9rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.07em;
+  }
+}

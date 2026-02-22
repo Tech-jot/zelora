@@ -6,6 +6,19 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+    --bg:           #ffffff;
+  --bg-soft:      #f9f9f9;
+  --bg-muted:     #f3f3f3;
+  --text:         #111111;
+  --text-sub:     #555555;
+  --text-muted:   #999999;
+  --accent:       #be8a5a;
+  --accent-light: #f5ede3;
+  --accent-dark:  #8a5e38;
+  --border:       #eeeeee;
+  --font-b:       'DM Sans', sans-serif;
+  --r:            14px;
+  --r-lg:         20px;
 }
 
 @theme inline {
